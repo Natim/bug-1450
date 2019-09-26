@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <script type="text/javascript" src="elm.js"></script>
+    </head>
+    <body>
+        <div id="moduleA"></div>
+        <div id="moduleB"></div>
+        <script>
+            const moduleA = Elm.ModuleA.init({node: document.getElementById("moduleA")});            
+            const moduleB = Elm.ModuleB.init({node: document.getElementById("moduleB")});
+        </script>
+    </body>
+</html>
