@@ -6,8 +6,20 @@
         <div id="moduleA"></div>
         <div id="moduleB"></div>
         <script>
-            const moduleA = Elm.ModuleA.init({node: document.getElementById("moduleA")});            
-            const moduleB = Elm.ModuleB.init({node: document.getElementById("moduleB")});
-        </script>
+            const moduleA = Elm.ModuleA.init({
+                flags: {name: "Rémy"},
+                node: document.getElementById("moduleA")
+            });
+            const moduleB = Elm.ModuleB.init({
+                flags: {name: "Sébastien"},
+                node: document.getElementById("moduleB")
+            });
+            moduleA.ports.outcomePort.subscribe((name) => {
+                moduleB.ports.incomePort.send(name);
+            });
+            moduleB.ports.outcomePort.subscribe((name) => {
+                moduleA.ports.incomePort.send(name);
+            }); 
+       </script>
     </body>
 </html>
